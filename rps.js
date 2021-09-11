@@ -1,6 +1,22 @@
 let playerScore = 0;
-let cpuScore = 0;
+let computerScore = 0;
+let playerSelection = '';
 
+const rps_btns = document.querySelectorAll('.button');
+const display = document.querySelector('.results');
+const p_s_box = document.querySelector('.player-selections-box');
+const c_s_box = document.querySelector('.computer-selections-box');
+const p_s_score = document.querySelector('.player-score-box');
+const c_s_score = document.querySelector('.computer-score-box');
+
+rps_btns.forEach((button) => {
+    button.addEventListener('click', buttonHandler);
+});
+
+function buttonHandler(e) {
+    playerSelection = e.target.id;
+    play(playerSelection, computerPlay());
+}
 
 function computerPlay() {
     const options = ["rock", "paper", "scissors"];
@@ -9,20 +25,17 @@ function computerPlay() {
 }
 
 function play(playerSelection, computerSelection) {
-    //let playerSelection = playerSelection.toLowerCase();
 
     switch (computerSelection) {
         case "rock":
             switch(playerSelection) {
                 case "rock":
-                    return tie(playerSelection);
+                    return tie(playerSelection, computerSelection);
                     break;
                 case "paper":
-                    playerScore++;
                     win(playerSelection, computerSelection);
                     break;
                 case "scissors":
-                    cpuScore++;
                     return lose(playerSelection, computerSelection);
                     break;
             }
@@ -31,14 +44,12 @@ function play(playerSelection, computerSelection) {
         case "paper":
             switch(playerSelection) {
                 case "rock":
-                    cpuScore++;
                     return lose(playerSelection, computerSelection);
                     break;
                 case "paper":
-                    return tie(playerSelection);
+                    return tie(playerSelection, computerSelection);
                     break;
                 case "scissors":
-                    playerScore++;
                     return win(playerSelection, computerSelection);
                     break;
             }
@@ -47,56 +58,57 @@ function play(playerSelection, computerSelection) {
         case "scissors":
             switch(playerSelection) {
                 case "rock":
-                    playerScore++;
                     return win(playerSelection, computerSelection);
                     break;
                 case "paper":
-                    cpuScore++;
                     return lose(playerSelection, computerSelection);
                     break;
                 case "scissors":
-                    return tie(playerSelection);
+                    return tie(playerSelection, computerSelection);
                     break;
             }
             break;
     
     }
+
 }
 
 function win(playerSelection, computerSelection) {
-    console.log(`You win, ${playerSelection} beats ${computerSelection}`);
+    p_s_box.textContent = `${playerSelection}`;
+    c_s_box.textContent = `${computerSelection}`;
+    p_s_score.textContent = `${++playerScore}`;
+    display.textContent = `You win, ${playerSelection} beats ${computerSelection}`;
+    showWinner();
 }
 
 function lose(playerSelection, computerSelection) {
-    console.log(`You lose, ${computerSelection} beats ${playerSelection}`);
+    p_s_box.textContent = `${playerSelection}`;
+    c_s_box.textContent = `${computerSelection}`;
+    c_s_score.textContent = `${++computerScore}`;
+    display.textContent = `You lose, ${computerSelection} beats ${playerSelection}`;
+    showWinner();
 }
 
-function tie(playerSelection) {
-    console.log(`It is a tie. You both chose ${playerSelection}.`);
+function tie(playerSelection, computerSelection) {
+    p_s_box.textContent = `${playerSelection}`;
+    c_s_box.textContent = `${computerSelection}`;
+    display.textContent = `It is a tie. You both chose ${playerSelection}.`;
 }
 
-function game() {
- 
-    for (let i = 1; i <= 5; i++) {
-        let playerSelection = prompt("Choose rock, paper, or scissors.");
+function showWinner() {
+    if (playerScore == 5) {
+        display.textContent = "Congratulations, you won! Refresh to play again!";
 
-        play(playerSelection, computerPlay());
-        console.log(`Current score: Player ${playerScore}, Computer ${cpuScore}`);
+        rps_btns.forEach((button) => {
+            button.removeEventListener('click', buttonHandler);
+        });
     }
 
-    if (playerScore > cpuScore) {
-        console.log(`Player wins! The score is ${playerScore} to ${cpuScore}.`);
+    else if (computerScore == 5) {
+        display.textContent = "Sorry, you lost! Refresh to play again!";
+
+        rps_btns.forEach((button) => {
+            button.removeEventListener('click', buttonHandler);
+        });
     }
-
-    else if (cpuScore > playerScore) {
-        console.log(`Computer wins! The score is ${cpuScore} to ${playerScore}.`);
-    }
-
-    else {
-        console.log(`Player and computer have tied. The score is ${playerScore}.`);
-    }
-
-    playerScore = 0;
-    cpuScore = 0;
-
 }

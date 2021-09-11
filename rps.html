@@ -3,8 +3,43 @@
 <head>
     <title>Rock Paper Scissors</title>
     <meta charset="UTF-8"/>
+    <script type="text/javascript" src="rps.js" defer></script>
+    <link rel="stylesheet" href="rps.css"></style>
 </head>
 <body>
-    <script type="text/javascript" src="rps.js"></script>
-    <h1>Open the console to play Rock, Paper Scissors!</h1>
+    <div id="container">
+        <h1>Rock, Paper, Scissors!</h1>
+        <div class="btn-container">
+            <img src="images/rock.png" alt="rock" id="rock" class="button">
+            <img src="images/paper.png" alt="paper" id="paper" class="button">
+            <img src="images/scissors.png" alt="scissors" id="scissors" class="button">
+        </div>
+
+        <div class="selections-container">
+            <div class="player-selections">
+                <p>Player's Selection</p>
+                <div class="player-selections-box"></div>
+            </div>
+            <div class="computer-selections">
+                <p>Computer's Selection</p>
+                <div class="computer-selections-box"></div>
+            </div>
+        </div>
+
+        <div class="scores-container">
+            <div class="player-score">
+                <p>Player's Score</p>
+                <div class="player-score-box">0</div>
+            </div>
+            <div class="computer-score">
+                <p>Computer's Score</p>
+                <div class="computer-score-box">0</div>
+            </div>
+        </div>
+
+        <div class="results">
+            <p>Let's play Rock, Paper, Scissors!</p>
+        </div>
+    </div>
 </body>
+</html>

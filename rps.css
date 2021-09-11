@@ -1,0 +1,110 @@
+html,body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+}
+
+h1 {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    flex-direction: column;
+}
+
+.btn-container {
+    padding: 2% 5% 2% 5%;
+}
+
+/* selections boxes */
+
+.selections-container {
+    display: flex;
+    flex-direction: row;
+    position: center;
+    align-items: center;
+}
+
+.player-selections {
+    margin-right: 10px;
+}
+
+.player-selections-box {
+    border: solid black 2px;
+    text-align: center;
+    padding: 20px 20px;
+}
+
+.computer-selections {
+    margin-left: 10px;
+}
+
+.computer-selections-box {
+    border: solid black 2px;
+    text-align: center;
+    padding: 20px 20px;
+}
+
+/* score boxes */
+
+.scores-container {
+    display: flex;
+    flex-direction: row;
+    position: center;
+    align-items: center;
+}
+
+.player-score {
+    margin-right: 10px;
+}
+
+.player-score-box {
+    border: solid black 2px;
+    text-align: center;
+    padding: 20px 20px;
+}
+
+.computer-score {
+    margin-left: 10px;
+}
+
+.computer-score-box {
+    border: solid black 2px;
+    text-align: center;
+    padding: 20px 20px;
+}
+
+/* results box */
+
+.results {
+    border: solid black 2px;
+    margin: 10px 0px 10px 0px;
+    padding: 1% 5% 1% 5%;
+}
+
+/* images */
+
+#rock {
+    height: 60px;
+    width: 60px;
+}
+
+#paper {
+    height: 60px;
+    width: 60px;
+}
+
+#scissors {
+    height: 60px;
+    width: 60px;
+}
